@@ -4,9 +4,9 @@
 # Importation des librairies
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split, KFold
+from sklearn.model_selection import train_test_split, KFold, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import roc_auc_score, RocCurveDisplay, confusion_matrix
+from sklearn.metrics import accuracy_score, roc_auc_score, RocCurveDisplay, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -96,13 +96,10 @@ plt.show()
 
 # %%
 # K-Fold Cross-Validation
-from sklearn.model_selection import cross_val_score
-from sklearn.metrics import accuracy_score
 
 k = 5
 kf = KFold(n_splits=k, shuffle=True, random_state=seed)
 auc_scores = []
-from sklearn.model_selection import cross_val_score
 model = RandomForestClassifier(
     random_state=seed,
     class_weight='balanced',
